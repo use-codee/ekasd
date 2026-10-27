@@ -1,106 +1,167 @@
 # Wind Decision
 
-A local analyst workspace for historical UK day-ahead wind purchasing decisions.
-The Decision view shows the latest forecast available for each delivery hour at
-a chosen D-1 cutoff. Accuracy compares those same selections with hourly Elexon
-WIND actuals, with coverage, error metrics and transparent historical context.
+A wind forecast analysis app for a UK utility's day-ahead power purchasing team.
+It reconstructs the forecasts available at a chosen decision time and measures
+their accuracy against actual generation using Elexon national wind data.
 
-Decision dates: **1–31 January 2026**. Delivery dates: **2 January–1 February 2026**.
-All times are UTC. The default **D-1 09:30 UTC** cutoff is assumed decision timing,
-not a verified market gate closure. The data source is Elexon national WIND only.
+**[Open the live application](https://ekasd.vercel.app/)**
+
+**[Watch the demo video](https://youtu.be/VNEoEWaZmj4)** — customer presentation
+and technical walkthrough.
+
+The frontend runs on Vercel and the Dockerized FastAPI backend runs on Render.
+The backend may take a moment to respond after inactivity.
+
+## Features
+
+- **Decision view:** select a delivery day and the previous day's decision cutoff
+  to see the latest eligible forecast for each delivery hour, including
+  publication timestamps, forecast horizons and coverage.
+- **Accuracy view:** compare historical forecast selections with actual generation
+  over a delivery range. Review MAE, signed bias, P90 absolute error, RMSE and MAPE,
+  with breakdowns by forecast horizon, delivery hour and delivery day.
+- **Transparent results:** missing observations remain gaps, sample counts are
+  visible, and assumptions and limitations accompany the analysis.
+- **Browser caching:** date selections persist between tabs, identical queries
+  reuse cached results, and Refresh data rechecks the current selection while
+  retaining its displayed results.
+
+## Scope and assumptions
+
+- Purchase decisions: **1–31 January 2026**, covering delivery dates
+  **2 January–1 February 2026**.
+- Source: Elexon **WINDFOR** forecasts and **FUELHH**, filtered to `WIND`, at
+  national level. All timestamps and controls use **UTC**.
+- The default cutoff is **09:30 UTC on D-1**. This is an assumed decision time,
+  not a verified market gate closure.
+- A WINDFOR timestamp is assumed to begin a one-hour delivery interval. For each
+  hour, the app selects the latest publication at or before the decision cutoff.
+  Forecasts published after their target time are excluded, and duplicate
+  publication/target pairs are removed.
+- Both datasets report power in **MW**. Hourly actual generation is the mean of
+  two distinct half-hour observations; both must exist.
+- Error is **forecast minus actual**: positive bias means wind was over-forecast.
+  Metrics use matched observations. Zero actuals are excluded only from MAPE.
+  P90 uses linear percentile interpolation.
+
+For the full delivery range at the default cutoff, there are **744 paired hours**.
+MAE is approximately **2,013 MW**, signed bias **+1,730 MW**, and P90 absolute error
+**4,144 MW**. The cause of the positive bias remains unresolved; alignment
+diagnostics did not establish an explanation. No time-shift or scale correction
+is applied.
+
+These statistics describe historical forecast error. They do not establish an
+optimal purchase amount or guarantee future shortage coverage. Demand, existing
+contracts, portfolio allocation, prices and risk preferences are outside scope.
 
 ## Run with Docker
 
-Prerequisite: Docker with Compose and a running daemon. From the root:
+With Docker and Docker Compose installed, run from the repository root:
 
 ```sh
 docker compose up --build
 ```
 
-Open [the production demo](http://localhost:8080). Nginx serves built assets and
-proxies `/api/` to the internal backend, which validates and loads embedded
-processed data at startup. No host Python/Node/uv or data volume is required.
-Initial images/dependencies need internet; backend runtime traffic stays on an internal
-network, while the frontend publishes port 8080 on its edge network. Backend health is awaited before frontend startup.
+Open **[http://localhost:8080](http://localhost:8080)**. Processed data is included
+in the backend image; no Elexon credentials or ingestion step are required.
+Internet access is needed for initial image and dependency downloads.
 
-Detached startup, checks, rebuild and shutdown:
+To stop the services:
 
 ```sh
-docker compose config --quiet
-docker compose build
-docker compose up -d --wait --wait-timeout 90
-docker compose exec -T backend python - < scripts/smoke_docker.py
-docker compose up -d --build --force-recreate --wait --wait-timeout 90
 docker compose down
 ```
 
-Remote hosting is separate; Vercel would need its own `/api` routing configuration.
+## Run for development
 
-## Native development installation
-
-Use Python **3.13.x**, Node **24.x**, npm **11.x**, uv **0.12.19**. From the root:
+Prerequisites: **Python 3.13.x**, **Node.js 24.x**, **npm 11.x** and
+**uv 0.12.19**. Install dependencies from the repository root:
 
 ```sh
 uv sync --project backend --frozen
 npm ci --prefix frontend
 ```
 
-uv creates `backend/.venv`; both runtime and development dependencies are locked
-in `backend/uv.lock`. npm uses `frontend/package-lock.json`. Keep both lockfiles
-when placing this folder under version control. No global test/lint packages are
-needed. The real datasets already exist locally; startup does not download data.
-
-## Run the native development demo
-
-Terminal 1, from the root:
+Start the backend:
 
 ```sh
 backend/.venv/bin/python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Terminal 2, from the root:
+In another terminal, start the frontend:
 
 ```sh
 npm run dev --prefix frontend
 ```
 
-Open [Wind Decision](http://127.0.0.1:5173). Use the Decision / Accuracy navigation.
-Delivery day and range pickers are constrained by API metadata; choose an HH:MM
-D-1 cutoff. Expand the hourly data and breakdown tables for accessible exact
-values, source publication times, sample counts and horizons.
+Open **[http://localhost:5173](http://localhost:5173)**. Interactive API
+documentation is available at **[http://localhost:8000/docs](http://localhost:8000/docs)**.
 
-Vite proxies `/api` to `http://127.0.0.1:8000`; frontend port 5173 is strict.
-[API docs](http://127.0.0.1:8000/docs) describe the typed responses.
-Stop each server with Ctrl+C. No external network is needed once dependencies and
-local datasets are installed. The Vite proxy is for native local development; the Docker path above uses
-Nginx for production serving. Remote deployment remains deferred.
+Optional configuration is documented in `.env.example`. Copy it to `.env` in
+the repository root to override the default cutoff, logging, CORS origins or
+processed-data directory. Environment variables take precedence. Keep `.env`
+out of version control.
 
-Optional settings: copy `.env.example` to `.env`. `WIND_CORS_ORIGINS` is a JSON
-array, `WIND_LOG_LEVEL` defaults to INFO, `WIND_DEFAULT_CUTOFF` defaults to 09:30,
-and `WIND_PROCESSED_DIR` can override the validated cache directory (prefer an
-absolute path). The default directory resolves relative to source, independent
-of cwd. `.env` is read from cwd; environment variables take precedence.
+## Architecture and data flow
 
-## Browser caching and refresh
+```text
+Elexon WINDFOR / FUELHH
+        |
+        v
+Separate ingestion -> raw responses -> cleaned CSVs + checksum manifest
+                                                |
+                                                v
+                                  FastAPI startup validation
+                                                |
+                                                v
+                                  In-memory data repository
+                                                |
+                                                v
+                                   /api/v1 -> React views
+```
 
-Responses are cached in browser memory with TanStack Query: identical endpoint and
-control combinations stay fresh for five minutes, and inactive entries are retained
-for 30 minutes. Date selections and the shared cutoff survive tab switches; a hard
-reload starts a new session. Stale results may refresh on remount, window focus or
-network reconnect. There is no polling or automatic retry.
+The API loads validated processed files once at startup. Requests run against
+that in-memory snapshot and do not download from Elexon or reread data files.
+The repository interface allows a future scheduled refresh process to be added
+without coupling ingestion to user requests.
 
-**Refresh data** rechecks the current selection and metadata even within five minutes.
-The same selection's results remain visible while refreshing; failures retain them
-with a warning and Retry. **Last fetched** records successful response receipt in UTC,
-not a source-data update. Changed metadata input checksums invalidate cached analytics.
-An uncached selection shows loading; a sleeping server may take a moment to respond.
+The frontend makes relative `/api/v1` requests. Vite proxies them during local
+development, Nginx proxies them in Docker Compose, and `frontend/vercel.json`
+forwards them to the Render backend in the deployed app.
 
-Refresh reads the backend's startup-loaded snapshot. It does not contact Elexon,
-run ingestion, or expose disk edits to an already-running backend. New source data
-requires separate ingestion and backend restart/redeployment. Changes are discovered
-when a request occurs; they are not pushed instantly to open browsers.
+Browser queries remain fresh for five minutes; inactive results are retained
+for 30 minutes. Stale queries may refresh on remount, window focus or network
+reconnection. Refresh data rechecks the selected result and metadata, while
+dataset checksum changes invalidate cached analytics. The browser cache resets
+on a page reload. New Elexon data requires separate ingestion and a backend
+restart or redeployment.
 
-## Verify and reproduce analysis
+## Repository structure
+
+| Path | Purpose |
+| --- | --- |
+| `backend/app/api/v1/` | Versioned metadata, forecast, accuracy and health routes |
+| `backend/app/services/` | Forecast selection, hourly aggregation, metrics and historical risk context |
+| `backend/app/data/` | Ingestion, cleaning and validated data repositories |
+| `backend/app/schemas/` | Typed API responses and error contracts |
+| `backend/app/core/` | Environment configuration and structured logging |
+| `backend/tests/` | Unit, API, ingestion and real-data regression tests |
+| `frontend/src/pages/` | Decision and Accuracy views |
+| `frontend/src/components/` | Charts, tables, loading, error and refresh states |
+| `frontend/src/api/`, `frontend/src/hooks/`, `frontend/src/types/` | API client, query cache, request hook and TypeScript contracts |
+| `frontend/src/App.test.tsx` | Component and query behavior tests |
+| `data/raw/` | Source responses and provenance sidecars |
+| `data/processed/` | Cleaned forecast and half-hour actual CSVs with checksum manifest |
+| `scripts/` | Ingestion, cache verification, analysis and Docker smoke checks |
+| `backend/Dockerfile`, `frontend/Dockerfile` | Multi-stage container builds |
+| `docker-compose.yml`, `frontend/nginx.conf` | Local service orchestration and API proxy |
+| `frontend/vercel.json` | Deployed frontend-to-backend API routing |
+| `.github/workflows/ci.yml` | Backend lint, formatting and tests; frontend lint, tests and build |
+| `.env.example`, `.python-version`, `.node-version` | Configuration example and runtime versions |
+
+## Validation
+
+Run from the repository root:
 
 ```sh
 backend/.venv/bin/ruff check backend scripts
@@ -109,74 +170,46 @@ backend/.venv/bin/python -m pytest backend/tests
 npm run lint --prefix frontend
 npm run test --prefix frontend -- --run
 npm run build --prefix frontend
-backend/.venv/bin/python scripts/analyze_wind.py
-backend/.venv/bin/python scripts/verify_elexon_cache.py
 ```
 
-The analysis command is offline and writes only `docs/analysis.md` and
-`docs/regression-baseline.json`. It computes the corrected full-scope baseline and
-alignment shifts -3..+3 on a common subset. The bias cause remains unknown; no
-shift/scale correction is applied to the app. The read-only cache verifier blocks
-HTTP/sockets while rebuilding copies in a temporary directory and checks original
-raw/processed integrity, provenance, identical CSVs, and complete timestamp grids.
+Tests cover cutoff boundaries and future-data leakage, hourly aggregation,
+duplicates, invalid horizons, missing data, metric calculations, API validation,
+real-data regression values, frontend states and cache behavior. GitHub Actions
+runs backend and frontend checks on pushes and pull requests.
 
-With both servers running, sample proxy checks:
+With Docker Compose running, verify the containerized application:
 
 ```sh
-curl --fail 'http://127.0.0.1:5173/api/v1/metadata'
-curl --fail 'http://127.0.0.1:5173/api/v1/forecasts?delivery_date=2026-01-02&cutoff_time=09:30'
-curl --fail 'http://127.0.0.1:5173/api/v1/forecasts?delivery_date=2026-02-01&cutoff_time=00:00'
-curl --fail 'http://127.0.0.1:5173/api/v1/accuracy?delivery_from=2026-01-02&delivery_to=2026-02-01&cutoff_time=09:30'
+docker compose exec -T backend python - < scripts/smoke_docker.py
 ```
 
-Health at `/api/v1/health` is process liveness only. During normal startup the API
-validates CSV schemas/hashes and prepares actuals once; requests use memory and
-never reread files or contact Elexon. Restart to load a refreshed cache.
+## Data reproduction
 
-## Data maintenance
+The committed processed dataset allows the app to run without external data
+access. To download or rebuild data separately:
 
 ```sh
 backend/.venv/bin/python scripts/ingest_elexon.py
 backend/.venv/bin/python scripts/ingest_elexon.py --offline
-backend/.venv/bin/python scripts/ingest_elexon.py --repair
 ```
 
-Default ingestion verifies/reuses daily raw chunks; offline requires all chunks;
-repair authentically redownloads only missing/invalid raw pairs. `--refresh` forces
-all 64 requests. See `scripts/README.md` for retries, provenance and failure
-protection. Ingestion is separate from app startup and requests. Raw and processed
-data are eligible for later version control; this folder has no Git repository.
+Ingestion uses daily chunks, retry/backoff for rate limits, provenance records
+and deterministic cleaning. The default run reuses verified raw chunks; offline
+mode requires the complete raw cache. See `scripts/README.md` for ingestion options.
 
-## Structure and interpretation
+To verify the cache and reproduce the analysis:
 
-- `backend/app/services/analytics.py`, `buffer.py`: pure selection, aggregation,
-  metrics and descriptive historical purchasing context.
-- `backend/app/data/repository.py`: replaceable startup-loaded local repository.
-  `ingestion.py`, `cleaning.py`: separate downloader and deterministic validation.
-- `backend/app/api/v1/`, `schemas/`: metadata, forecasts, accuracy, health, typed
-  contracts and consistent error envelopes. `core/`: settings and JSON logging.
-- `backend/tests/`: isolated fixtures and frozen real-data regression checks;
-  tests need no Elexon access and do not modify production data.
-- `frontend/src/`: connected pages, chart/table/state components, typed API client,
-  cancellation/stale-response protection, UTC formatting and UI behavior tests.
-- `data/raw/`: authentic source bytes and provenance sidecars;
-  `data/processed/`: forecast/half-hour actual CSVs and checksum manifest.
-- `scripts/`: ingestion, read-only cache verification, offline analysis and a
-  container smoke check.
-- `backend/Dockerfile`, `frontend/Dockerfile`, `frontend/nginx.conf`,
-  `.dockerignore`, `docker-compose.yml`: production containers and same-origin
-  proxy. Local Docker instructions are above.
-- `.github/workflows/ci.yml`: locked installs, backend lint/format/tests and
-  frontend lint/tests/build. Hosted CI is not claimed without a repository.
+```sh
+backend/.venv/bin/python scripts/verify_elexon_cache.py
+backend/.venv/bin/python scripts/analyze_wind.py
+```
 
-Missing values remain missing. Metrics use pairs; MAPE excludes zero actuals only
-from its own denominator. Positive bias means over-forecast. P90 absolute error
-uses linear interpolation and is historical magnitude, not an optimal or
-calibrated purchasing buffer. Demand, prices and risk preferences are not modeled.
+The verifier checks integrity and reproduces processed CSVs from temporary copies
+with network access blocked. The analysis command generates local reports in
+`docs/`, including the regression baseline and alignment diagnostic. Neither
+command changes the running backend snapshot.
 
-## AI assistance and remaining delivery scope
+## AI assistance
 
-OpenAI Codex assisted with implementation, analysis, documentation and verification.
-Review the analysis and source before submission. This milestone completes the
-local demo and Docker packaging; deployment, public repository publication, demo video and
-submission remain deferred. There is no deployed application URL at this stage.
+OpenAI Codex was used to assist with implementation, analysis, documentation and
+verification.
