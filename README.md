@@ -38,7 +38,7 @@ Remote hosting is separate; Vercel would need its own `/api` routing configurati
 
 ## Native development installation
 
-Use Python **3.13.x**, Node **26.x**, npm **11.x**, uv **0.12.19**. From the root:
+Use Python **3.13.x**, Node **24.x**, npm **11.x**, uv **0.12.19**. From the root:
 
 ```sh
 uv sync --project backend --frozen

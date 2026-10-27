@@ -1,4 +1,4 @@
-FROM node:26-bookworm-slim AS builder
+FROM node:24-bookworm-slim AS builder
 WORKDIR /build/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
