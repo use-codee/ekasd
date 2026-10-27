@@ -1,0 +1,11 @@
+{
+  "downloaded_at": "2026-10-26T10:17:22.807883Z",
+  "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+  "params": {
+    "fuelType": "WIND",
+    "settlementDateFrom": "2026-01-28",
+    "settlementDateTo": "2026-01-28"
+  },
+  "records": 48,
+  "sha256": "1115d6d9b7d9a304e7d24cdec42c8b68783fd8aa53cb7be27d215be3b170c67b"
+}

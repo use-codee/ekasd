@@ -1,0 +1,10 @@
+{
+  "downloaded_at": "2026-10-26T10:17:09.331173Z",
+  "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+  "params": {
+    "publishDateTimeFrom": "2026-01-03T00:00:00Z",
+    "publishDateTimeTo": "2026-01-04T00:00:00Z"
+  },
+  "records": 584,
+  "sha256": "5eefbe5490290b20abaa1cf76bb3db36b28e8b530affbf071a7bad2eb84b0a29"
+}

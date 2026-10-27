@@ -1,0 +1,985 @@
+{
+  "artifacts": {
+    "actuals_half_hourly.csv": {
+      "bytes": 67616,
+      "sha256": "f31240cb6445b32c5743db26ae8239397c588fd7e29bc965e56b5c827bdd5239"
+    },
+    "forecasts.csv": {
+      "bytes": 681152,
+      "sha256": "95b8a7f5e5324e9ea76ce9e3e5e24e484ce7dfb532e5d3888b3be2275305f5a0"
+    }
+  },
+  "built_at": "2026-10-26T10:49:22.121440Z",
+  "chunks": [
+    {
+      "downloaded_at": "2026-10-26T10:17:07.939755Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2025-12-30T00:00:00Z",
+        "publishDateTimeTo": "2025-12-31T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2025-12-30.json",
+      "records": 584,
+      "sha256": "c385cb1e794c230185c31b0cfb931b4c9a2764cf2c1bc1461caac0d5e1a2c2a9",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:47:09.546301Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2025-12-31T00:00:00Z",
+        "publishDateTimeTo": "2026-01-01T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2025-12-31.json",
+      "records": 584,
+      "sha256": "fd23186984084e41570d8f3895b912e4c0ec034d54d3e1553bfc1e6cbca50982",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:08.689882Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-01T00:00:00Z",
+        "publishDateTimeTo": "2026-01-02T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-01.json",
+      "records": 584,
+      "sha256": "5c70f8994f0a4bdc2fef6de699a53320a5d568dc515154b40933fa8362046cc4",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:47:10.480367Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-02T00:00:00Z",
+        "publishDateTimeTo": "2026-01-03T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-02.json",
+      "records": 584,
+      "sha256": "23c58bbcb18bc731cb40d70860eaaa953b6ca49a6df5934763eca5ef8b2cf90f",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:09.331173Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-03T00:00:00Z",
+        "publishDateTimeTo": "2026-01-04T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-03.json",
+      "records": 584,
+      "sha256": "5eefbe5490290b20abaa1cf76bb3db36b28e8b530affbf071a7bad2eb84b0a29",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:09.521180Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-04T00:00:00Z",
+        "publishDateTimeTo": "2026-01-05T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-04.json",
+      "records": 584,
+      "sha256": "7047c1237868ade4636a01b08a69d359fc1dc1646654974e6c50d09c806e2cb4",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:09.698645Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-05T00:00:00Z",
+        "publishDateTimeTo": "2026-01-06T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-05.json",
+      "records": 584,
+      "sha256": "071b2d6de3fb8867b0b0cfc506b5fcbfcc220c610847c9dca9c1ba7f6a1bb664",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:09.886939Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-06T00:00:00Z",
+        "publishDateTimeTo": "2026-01-07T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-06.json",
+      "records": 584,
+      "sha256": "fd9574e7622b368aae89b8c85bc88b14596f0ab2d637b659942a82a15176e243",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:10.067724Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-07T00:00:00Z",
+        "publishDateTimeTo": "2026-01-08T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-07.json",
+      "records": 584,
+      "sha256": "7312c679a22c651f55ed18839e15f7636b9c020f59a3efed232548651fdbaea2",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:10.241562Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-08T00:00:00Z",
+        "publishDateTimeTo": "2026-01-09T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-08.json",
+      "records": 584,
+      "sha256": "05dc93590d3f44ed10706353e14ea3ee8e661b001b016105f14af74337923113",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:10.558864Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-09T00:00:00Z",
+        "publishDateTimeTo": "2026-01-10T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-09.json",
+      "records": 584,
+      "sha256": "e80c6487f6672f1abfc3fc1a361b0b8f41bb8e6f7ae185380e807f5dda8be478",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:10.748643Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-10T00:00:00Z",
+        "publishDateTimeTo": "2026-01-11T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-10.json",
+      "records": 584,
+      "sha256": "c927f7ead62de423de5c6600883f0488424a0df399fd06d7a9e2356961777124",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:10.969244Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-11T00:00:00Z",
+        "publishDateTimeTo": "2026-01-12T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-11.json",
+      "records": 584,
+      "sha256": "0acd90eb269583b5fbd9f358e39b76932c3643224c64ee72dc28957fa9977353",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:11.146595Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-12T00:00:00Z",
+        "publishDateTimeTo": "2026-01-13T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-12.json",
+      "records": 584,
+      "sha256": "7f17243806e336a108c99e9f3f02b8b5441c43474cc0998642b09f867aa8532f",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:11.325785Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-13T00:00:00Z",
+        "publishDateTimeTo": "2026-01-14T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-13.json",
+      "records": 584,
+      "sha256": "6fec3644426feec9eb6f0e634a7e6a11c3b720976246e1c1b9fe415bcd1cfa1c",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:11.504007Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-14T00:00:00Z",
+        "publishDateTimeTo": "2026-01-15T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-14.json",
+      "records": 584,
+      "sha256": "37358009876280f32035d11c26e6db1f9953674514db1cc23f8326de7b217130",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:11.679978Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-15T00:00:00Z",
+        "publishDateTimeTo": "2026-01-16T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-15.json",
+      "records": 584,
+      "sha256": "665fcbfe7c0798034473693fa06019f5a4dfa2986ea1acbe340ce20ff561a040",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:11.877085Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-16T00:00:00Z",
+        "publishDateTimeTo": "2026-01-17T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-16.json",
+      "records": 584,
+      "sha256": "d03f411172e79e15ccf1b33cf05935eedc8781d1c82b3a7ddb43f2007fe9691f",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:12.061144Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-17T00:00:00Z",
+        "publishDateTimeTo": "2026-01-18T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-17.json",
+      "records": 584,
+      "sha256": "241c6fb7b8796ec931ddf51c6debede31075855dbba49cd6f26ef8e60086376e",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:12.250605Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-18T00:00:00Z",
+        "publishDateTimeTo": "2026-01-19T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-18.json",
+      "records": 584,
+      "sha256": "0209dc81f4aca1f4812d61edc1a8c71243501f8f5f87b98d8ead55eda74ec4ce",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:12.422702Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-19T00:00:00Z",
+        "publishDateTimeTo": "2026-01-20T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-19.json",
+      "records": 584,
+      "sha256": "63c77d1b550aa2bdc11c61a06787231490c8448212da030db537da405e6f04c1",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:12.608802Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-20T00:00:00Z",
+        "publishDateTimeTo": "2026-01-21T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-20.json",
+      "records": 584,
+      "sha256": "e28633e28560b3e006f42452622ca35f500a5629687e6b11481162e196961057",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:12.802954Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-21T00:00:00Z",
+        "publishDateTimeTo": "2026-01-22T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-21.json",
+      "records": 584,
+      "sha256": "e8d1e4a55fafd22cc581dda8ea97152d3778c87c9b4f238af68b91fe15ef1691",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:12.989702Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-22T00:00:00Z",
+        "publishDateTimeTo": "2026-01-23T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-22.json",
+      "records": 584,
+      "sha256": "9e33bf649f878427d34341f19a72579e20b398aef70ae2a233aa8f595505b178",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:13.541374Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-23T00:00:00Z",
+        "publishDateTimeTo": "2026-01-24T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-23.json",
+      "records": 584,
+      "sha256": "c2929b55439665f48b8ae40c0aace04d3959189ee84d7f505b1fd8d228dc71f7",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:13.724924Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-24T00:00:00Z",
+        "publishDateTimeTo": "2026-01-25T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-24.json",
+      "records": 584,
+      "sha256": "6d4614f482f01f2bd37a74b63a27a133729f0efd4ce27d1a9648db36d3cdf2d6",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:13.916623Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-25T00:00:00Z",
+        "publishDateTimeTo": "2026-01-26T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-25.json",
+      "records": 584,
+      "sha256": "2cce49c740304b963f1a358812aebd86265ab3a76cf502ab08f1fd29acb73973",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:14.113277Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-26T00:00:00Z",
+        "publishDateTimeTo": "2026-01-27T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-26.json",
+      "records": 584,
+      "sha256": "f5198688e19046705d4f66516f1374f8200830f2599d166b655283d102b7e3f1",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:14.304366Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-27T00:00:00Z",
+        "publishDateTimeTo": "2026-01-28T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-27.json",
+      "records": 584,
+      "sha256": "392a9f801793119c7fef3085f0f9bd63d7e9d0d297f0d006c49c0ce67f2d0709",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:14.485427Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-28T00:00:00Z",
+        "publishDateTimeTo": "2026-01-29T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-28.json",
+      "records": 584,
+      "sha256": "577f83ba066bbc077b82a8bef626919575b255f7700c333214f61d14240812c7",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:14.660014Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-29T00:00:00Z",
+        "publishDateTimeTo": "2026-01-30T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-29.json",
+      "records": 584,
+      "sha256": "91e2f9a91c1b93e418562df2cce59a3961e547c9f985d534bd2f72f8c94b1d4b",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:15.215755Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-30T00:00:00Z",
+        "publishDateTimeTo": "2026-01-31T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-30.json",
+      "records": 584,
+      "sha256": "88566e34fa709ddf2706f6e783cae11f492d7eeac327b5b73a8833b220b85c1e",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:15.385476Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/WINDFOR/stream",
+      "params": {
+        "publishDateTimeFrom": "2026-01-31T00:00:00Z",
+        "publishDateTimeTo": "2026-02-01T00:00:00Z"
+      },
+      "path": "data/raw/windfor/2026-01-31.json",
+      "records": 584,
+      "sha256": "e69da535c624cecc4a6a3392a23db40ec211f1b6ffcef98e5742a861cf03c650",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:15.547502Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-02",
+        "settlementDateTo": "2026-01-02"
+      },
+      "path": "data/raw/fuelhh/2026-01-02.json",
+      "records": 48,
+      "sha256": "8c8a430566cf844b0db55202e8f1b8ad74f06053685cb1d2b5d678bb6af01d0e",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:15.732104Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-03",
+        "settlementDateTo": "2026-01-03"
+      },
+      "path": "data/raw/fuelhh/2026-01-03.json",
+      "records": 48,
+      "sha256": "4b603000b3062882c1571ebd709f29141de246d3959da522c7773e05327b9e51",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:15.902756Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-04",
+        "settlementDateTo": "2026-01-04"
+      },
+      "path": "data/raw/fuelhh/2026-01-04.json",
+      "records": 48,
+      "sha256": "4256a17ec229e8fb98e6da887b8eb7561ef1ba19def6a51f384c3565ab55d462",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:16.079784Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-05",
+        "settlementDateTo": "2026-01-05"
+      },
+      "path": "data/raw/fuelhh/2026-01-05.json",
+      "records": 48,
+      "sha256": "9a575119b8b0b91873dcb9268f10a14718114e3b49d17d715ec51bd1fad04422",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:16.242620Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-06",
+        "settlementDateTo": "2026-01-06"
+      },
+      "path": "data/raw/fuelhh/2026-01-06.json",
+      "records": 48,
+      "sha256": "304f609366e42241a22697f991f71980e3ee0dd0c914b9d4bc1689fb5525d609",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:16.428402Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-07",
+        "settlementDateTo": "2026-01-07"
+      },
+      "path": "data/raw/fuelhh/2026-01-07.json",
+      "records": 48,
+      "sha256": "f48fe8e9b401bad8551c7f9a5cab83bf40dfdaaad5ef4c63c0618f0c7b88e709",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:17.021425Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-08",
+        "settlementDateTo": "2026-01-08"
+      },
+      "path": "data/raw/fuelhh/2026-01-08.json",
+      "records": 48,
+      "sha256": "548e52d79d28fee2974f34c1fe6ed7b6d8ce9c2dac2c505f994ecf18f6c15116",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:17.594356Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-09",
+        "settlementDateTo": "2026-01-09"
+      },
+      "path": "data/raw/fuelhh/2026-01-09.json",
+      "records": 48,
+      "sha256": "a399c40efd9a220405694361ce3dd467d2e2f063e1b67d027e6c2be7bb13f2f5",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:17.758299Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-10",
+        "settlementDateTo": "2026-01-10"
+      },
+      "path": "data/raw/fuelhh/2026-01-10.json",
+      "records": 48,
+      "sha256": "8ca84386f5ab4671455dbc929a4a7e424b4a3901065a5df5869c6b2e903c17d6",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:17.932157Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-11",
+        "settlementDateTo": "2026-01-11"
+      },
+      "path": "data/raw/fuelhh/2026-01-11.json",
+      "records": 48,
+      "sha256": "3c12151071c216e7775b3ca2a5f620b2c3966137694cfd4ff7c9aa8d71bd4db6",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:18.098234Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-12",
+        "settlementDateTo": "2026-01-12"
+      },
+      "path": "data/raw/fuelhh/2026-01-12.json",
+      "records": 48,
+      "sha256": "bed49964125160d8993e67e133cee4c2377ca2523a483ef22c473526ee16de70",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:18.270277Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-13",
+        "settlementDateTo": "2026-01-13"
+      },
+      "path": "data/raw/fuelhh/2026-01-13.json",
+      "records": 48,
+      "sha256": "1ac8d005f3ad346641cd98db2a0a02ea52ed7b841c4e48ad7fba5333f39dcaf0",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:18.851164Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-14",
+        "settlementDateTo": "2026-01-14"
+      },
+      "path": "data/raw/fuelhh/2026-01-14.json",
+      "records": 48,
+      "sha256": "3ac0133e0e75c934816993bb3f1a97ac44acbdc5022575e8394fcb025b687b8f",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:19.468631Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-15",
+        "settlementDateTo": "2026-01-15"
+      },
+      "path": "data/raw/fuelhh/2026-01-15.json",
+      "records": 48,
+      "sha256": "7b751c69732a5cb83e5c4e66806d95980509931444bf02c09f2ee705a8772f6d",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:19.780222Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-16",
+        "settlementDateTo": "2026-01-16"
+      },
+      "path": "data/raw/fuelhh/2026-01-16.json",
+      "records": 48,
+      "sha256": "ee982bb08bf66a8559da94a573ecf3e8e368ab02d8397d2912afea6a5cac7e64",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:19.958281Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-17",
+        "settlementDateTo": "2026-01-17"
+      },
+      "path": "data/raw/fuelhh/2026-01-17.json",
+      "records": 48,
+      "sha256": "58a678df49e3e280363800f40e9668669028e8367b3cb27f8ac197e7d64bdad2",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:20.135084Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-18",
+        "settlementDateTo": "2026-01-18"
+      },
+      "path": "data/raw/fuelhh/2026-01-18.json",
+      "records": 48,
+      "sha256": "8330f5a62786f5dd7642943d08c8e50bc8e8a653f4b801418b31d55a8ac9884a",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:20.305983Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-19",
+        "settlementDateTo": "2026-01-19"
+      },
+      "path": "data/raw/fuelhh/2026-01-19.json",
+      "records": 48,
+      "sha256": "fecde350099a25227dd800134fc084b985f091805847f43f6dfbca834b0641bb",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:20.479355Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-20",
+        "settlementDateTo": "2026-01-20"
+      },
+      "path": "data/raw/fuelhh/2026-01-20.json",
+      "records": 48,
+      "sha256": "f935c0f14464c066d367975d04f17c0303e051d0907ba8dc4df825b9c315c037",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:20.643790Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-21",
+        "settlementDateTo": "2026-01-21"
+      },
+      "path": "data/raw/fuelhh/2026-01-21.json",
+      "records": 48,
+      "sha256": "a8adf547f637ed587460f61b0662d11391425b550b03694cacd6aabbc2b513be",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:21.180171Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-22",
+        "settlementDateTo": "2026-01-22"
+      },
+      "path": "data/raw/fuelhh/2026-01-22.json",
+      "records": 48,
+      "sha256": "b558a4062dae504f64fdbdc13c9514276ac5676892bb8e24906489d93541459c",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:21.358480Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-23",
+        "settlementDateTo": "2026-01-23"
+      },
+      "path": "data/raw/fuelhh/2026-01-23.json",
+      "records": 48,
+      "sha256": "655f8251cd36c82c239685e0de8a34f8f13a271b2da712d8b7ba5be02cddb3ec",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:22.135406Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-24",
+        "settlementDateTo": "2026-01-24"
+      },
+      "path": "data/raw/fuelhh/2026-01-24.json",
+      "records": 48,
+      "sha256": "b0cc9945f7b5f7eb2a40b9402c28cbd771618d14d2fbd6145b6b66735e9dc932",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:22.305379Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-25",
+        "settlementDateTo": "2026-01-25"
+      },
+      "path": "data/raw/fuelhh/2026-01-25.json",
+      "records": 48,
+      "sha256": "cdcc885ca77223e7b3d611abcb89c66b2004351525a6169a4524ae709c00ca61",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:22.475889Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-26",
+        "settlementDateTo": "2026-01-26"
+      },
+      "path": "data/raw/fuelhh/2026-01-26.json",
+      "records": 48,
+      "sha256": "b2123c456ec291848b595f3efc0fd9b12d9abc0e127273ae62c6ab67aeeac7db",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:22.644563Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-27",
+        "settlementDateTo": "2026-01-27"
+      },
+      "path": "data/raw/fuelhh/2026-01-27.json",
+      "records": 48,
+      "sha256": "77ec3897fd7b4c0e1bbda97a18eb0b7ee780cc3efa98eee0f4d9c0ed842461a7",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:22.807883Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-28",
+        "settlementDateTo": "2026-01-28"
+      },
+      "path": "data/raw/fuelhh/2026-01-28.json",
+      "records": 48,
+      "sha256": "1115d6d9b7d9a304e7d24cdec42c8b68783fd8aa53cb7be27d215be3b170c67b",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:23.002341Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-29",
+        "settlementDateTo": "2026-01-29"
+      },
+      "path": "data/raw/fuelhh/2026-01-29.json",
+      "records": 48,
+      "sha256": "93ffe9770b1ab141f25753daf391e346c93e8ebf028014b84dc860face697a8f",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:23.561089Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-30",
+        "settlementDateTo": "2026-01-30"
+      },
+      "path": "data/raw/fuelhh/2026-01-30.json",
+      "records": 48,
+      "sha256": "a4b29997f665ea700ec04e5e559f5d24233ca3cc9b77e38d679199f2240c6eb7",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:47:10.746717Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-01-31",
+        "settlementDateTo": "2026-01-31"
+      },
+      "path": "data/raw/fuelhh/2026-01-31.json",
+      "records": 48,
+      "sha256": "b7fc3a58ba6397ff8aea45ab462146a2eb634b27e80219d0c4286a6281f86427",
+      "state": "reused"
+    },
+    {
+      "downloaded_at": "2026-10-26T10:17:24.147296Z",
+      "endpoint": "https://data.elexon.co.uk/bmrs/api/v1/datasets/FUELHH/stream",
+      "params": {
+        "fuelType": "WIND",
+        "settlementDateFrom": "2026-02-01",
+        "settlementDateTo": "2026-02-01"
+      },
+      "path": "data/raw/fuelhh/2026-02-01.json",
+      "records": 48,
+      "sha256": "15e5f5dcb2e3233e40a5dd964f1c99672f8a0a7a640d73fce8652124869984be",
+      "state": "reused"
+    }
+  ],
+  "field_types": {
+    "fuelType": "literal WIND",
+    "generation": "finite decimal MW; preserved without binary-float rounding",
+    "publishTime": "ISO 8601 timezone-aware UTC timestamp",
+    "settlementDate": "ISO date",
+    "settlementPeriod": "integer, 1..48",
+    "startTime": "ISO 8601 timezone-aware UTC interval start"
+  },
+  "offline": true,
+  "quality": {
+    "actual_coverage": {
+      "expected": 1488,
+      "missing": [],
+      "observed": 1488
+    },
+    "actuals": {
+      "conflicting_duplicates": 0,
+      "duplicates_collapsed": 0,
+      "invalid_schema": 0,
+      "negative_generation": 0,
+      "negative_horizon": 0,
+      "outside_delivery": 0,
+      "outside_publication": 0,
+      "processed_rows": 1488,
+      "raw_rows": 1488,
+      "schema_valid": 1488
+    },
+    "forecast_target_coverage": {
+      "expected": 744,
+      "missing": [],
+      "observed": 744
+    },
+    "forecasts": {
+      "conflicting_duplicates": 0,
+      "duplicates_collapsed": 0,
+      "invalid_schema": 0,
+      "negative_generation": 0,
+      "negative_horizon": 3961,
+      "outside_delivery": 1024,
+      "outside_publication": 0,
+      "processed_rows": 14287,
+      "raw_rows": 19272,
+      "schema_valid": 19272
+    },
+    "generation_summary_mw": {
+      "actuals": {
+        "maximum": "17805",
+        "minimum": "1695",
+        "zero_rows": 0
+      },
+      "forecasts": {
+        "maximum": "21353",
+        "minimum": "2292",
+        "zero_rows": 0
+      }
+    },
+    "horizon_hours": [
+      0.5,
+      66.5
+    ],
+    "publication_range": [
+      "2025-12-31T02:30:00Z",
+      "2026-01-31T22:30:00Z"
+    ],
+    "publications_by_date": {
+      "2025-12-31": 8,
+      "2026-01-01": 8,
+      "2026-01-02": 8,
+      "2026-01-03": 8,
+      "2026-01-04": 8,
+      "2026-01-05": 8,
+      "2026-01-06": 8,
+      "2026-01-07": 8,
+      "2026-01-08": 8,
+      "2026-01-09": 8,
+      "2026-01-10": 8,
+      "2026-01-11": 8,
+      "2026-01-12": 8,
+      "2026-01-13": 8,
+      "2026-01-14": 8,
+      "2026-01-15": 8,
+      "2026-01-16": 8,
+      "2026-01-17": 8,
+      "2026-01-18": 8,
+      "2026-01-19": 8,
+      "2026-01-20": 8,
+      "2026-01-21": 8,
+      "2026-01-22": 8,
+      "2026-01-23": 8,
+      "2026-01-24": 8,
+      "2026-01-25": 8,
+      "2026-01-26": 8,
+      "2026-01-27": 8,
+      "2026-01-28": 8,
+      "2026-01-29": 8,
+      "2026-01-30": 8,
+      "2026-01-31": 8
+    },
+    "raw_publication_range": [
+      "2025-12-30T02:30:00Z",
+      "2026-01-31T22:30:00Z"
+    ],
+    "raw_publications_by_date": {
+      "2025-12-30": 8,
+      "2025-12-31": 8,
+      "2026-01-01": 8,
+      "2026-01-02": 8,
+      "2026-01-03": 8,
+      "2026-01-04": 8,
+      "2026-01-05": 8,
+      "2026-01-06": 8,
+      "2026-01-07": 8,
+      "2026-01-08": 8,
+      "2026-01-09": 8,
+      "2026-01-10": 8,
+      "2026-01-11": 8,
+      "2026-01-12": 8,
+      "2026-01-13": 8,
+      "2026-01-14": 8,
+      "2026-01-15": 8,
+      "2026-01-16": 8,
+      "2026-01-17": 8,
+      "2026-01-18": 8,
+      "2026-01-19": 8,
+      "2026-01-20": 8,
+      "2026-01-21": 8,
+      "2026-01-22": 8,
+      "2026-01-23": 8,
+      "2026-01-24": 8,
+      "2026-01-25": 8,
+      "2026-01-26": 8,
+      "2026-01-27": 8,
+      "2026-01-28": 8,
+      "2026-01-29": 8,
+      "2026-01-30": 8,
+      "2026-01-31": 8
+    },
+    "target_range": [
+      "2026-01-02T00:00:00Z",
+      "2026-02-01T23:00:00Z"
+    ]
+  },
+  "schemas": {
+    "actuals_half_hourly.csv": [
+      "startTime",
+      "settlementDate",
+      "settlementPeriod",
+      "fuelType",
+      "generation"
+    ],
+    "forecasts.csv": [
+      "publishTime",
+      "startTime",
+      "generation"
+    ]
+  },
+  "scope": {
+    "decision_dates": [
+      "2026-01-01",
+      "2026-01-31"
+    ],
+    "delivery_interval": [
+      "2026-01-02T00:00:00Z",
+      "2026-02-02T00:00:00Z"
+    ],
+    "publication_interval": [
+      "2025-12-30T00:00:00Z",
+      "2026-02-01T00:00:00Z"
+    ]
+  },
+  "transformation_version": "2.0.0"
+}

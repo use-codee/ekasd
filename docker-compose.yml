@@ -1,0 +1,45 @@
+name: wind-decision
+
+services:
+  backend:
+    image: wind-decision-backend:0.6.0
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      PORT: "8000"
+      WIND_PROCESSED_DIR: /app/data/processed
+      WIND_DEFAULT_CUTOFF: ${WIND_DEFAULT_CUTOFF:-09:30}
+      WIND_LOG_LEVEL: ${WIND_LOG_LEVEL:-INFO}
+      WIND_CORS_ORIGINS: '[]'
+    networks:
+      - data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  frontend:
+    image: wind-decision-frontend:0.6.0
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - data
+      - edge
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+# Backend has no external egress. The frontend edge network allows host publishing.
+networks:
+  data:
+    internal: true
+  edge:
+    driver: bridge
