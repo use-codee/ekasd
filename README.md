@@ -81,6 +81,25 @@ and `WIND_PROCESSED_DIR` can override the validated cache directory (prefer an
 absolute path). The default directory resolves relative to source, independent
 of cwd. `.env` is read from cwd; environment variables take precedence.
 
+## Browser caching and refresh
+
+Responses are cached in browser memory with TanStack Query: identical endpoint and
+control combinations stay fresh for five minutes, and inactive entries are retained
+for 30 minutes. Date selections and the shared cutoff survive tab switches; a hard
+reload starts a new session. Stale results may refresh on remount, window focus or
+network reconnect. There is no polling or automatic retry.
+
+**Refresh data** rechecks the current selection and metadata even within five minutes.
+The same selection's results remain visible while refreshing; failures retain them
+with a warning and Retry. **Last fetched** records successful response receipt in UTC,
+not a source-data update. Changed metadata input checksums invalidate cached analytics.
+An uncached selection shows loading; a sleeping server may take a moment to respond.
+
+Refresh reads the backend's startup-loaded snapshot. It does not contact Elexon,
+run ingestion, or expose disk edits to an already-running backend. New source data
+requires separate ingestion and backend restart/redeployment. Changes are discovered
+when a request occurs; they are not pushed instantly to open browsers.
+
 ## Verify and reproduce analysis
 
 ```sh

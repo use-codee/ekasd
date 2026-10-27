@@ -1,20 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { request } from '../api/client'
+import { requestKey } from '../api/queryClient'
+import type { Metadata } from '../types/api'
 
 export function useRequest<T>(path: string | null) {
-  const [attempt, setAttempt] = useState(0)
-  const [state, setState] = useState<{ path: string; attempt: number; data?: T; error?: string }>()
-  useEffect(() => {
-    if (path === null) return
-    const controller = new AbortController()
-    let active = true
-    request<T>(path, controller.signal).then(
-      data => { if (active) setState({ path, attempt, data }) },
-      error => { if (active) setState({ path, attempt, error: error instanceof Error ? error.message : 'Unable to load data' }) },
-    )
-    return () => { active = false; controller.abort() }
-  }, [path, attempt])
-  const current = state?.path === path && state.attempt === attempt ? state : undefined
-  return { data: current?.data, error: current?.error, loading: path !== null && !current,
-    retry: () => setAttempt(n => n + 1) }
+  const client = useQueryClient()
+  const result = useQuery({ queryKey: requestKey(path), enabled: path !== null,
+    queryFn: ({ signal }) => request<T>(path!, signal) })
+  const [manualPath, setManualPath] = useState<string | null>(null)
+  const refresh = async () => {
+    if (path === null || result.isFetching || manualPath === path) return
+    setManualPath(path)
+    try {
+      // Start this selection immediately; metadata invalidation joins in-flight requests.
+      await Promise.all([
+        result.refetch({ cancelRefetch: false }),
+        path === 'metadata' ? Promise.resolve() : client.fetchQuery({
+          queryKey: requestKey('metadata'), staleTime: 0,
+          queryFn: ({ signal }) => request<Metadata>('metadata', signal),
+        }).catch(() => undefined), // App displays metadata refresh failures without hiding the workspace.
+      ])
+    } finally { setManualPath(null) }
+  }
+  const enabled = path !== null
+  return {
+    data: enabled ? result.data : undefined,
+    error: enabled && result.error ? result.error.message : undefined,
+    loading: enabled && result.isPending,
+    refreshing: enabled && (result.isFetching || manualPath === path) && result.data !== undefined,
+    busy: enabled && (result.isFetching || manualPath === path),
+    lastFetched: enabled ? result.dataUpdatedAt : 0,
+    hasData: enabled && result.data !== undefined,
+    retry: refresh,
+  }
 }

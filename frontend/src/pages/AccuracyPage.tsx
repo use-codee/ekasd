@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import type { Accuracy, Metadata } from '../types/api'
 import { query } from '../api/client'
 import { number, validClock, validDay } from '../api/format'
 import { useRequest } from '../hooks/useRequest'
-import { RequestState } from '../components/States'
+import { RequestState, RefreshControls } from '../components/States'
 import { BreakdownChart, WindChart } from '../components/Charts'
 import { HourlyTable } from '../components/HourlyTable'
 
@@ -22,15 +21,14 @@ function biasExplanation(value: number | null): string {
   return 'Over- and under-forecasts balance on average; individual errors may remain.'
 }
 
-export function AccuracyPage({ meta, clock, setClock }: { meta: Metadata; clock: string; setClock: (value: string) => void }) {
-  const [first, setFirst] = useState(meta.delivery_from)
-  const [last, setLast] = useState(meta.delivery_to)
+export function AccuracyPage({ meta, clock, setClock, first, setFirst, last, setLast }: { first: string; last: string; setFirst: (value: string) => void; setLast: (value: string) => void; meta: Metadata; clock: string; setClock: (value: string) => void }) {
   const valid = validDay(first, meta.delivery_from, meta.delivery_to) && validDay(last, meta.delivery_from, meta.delivery_to) && first <= last && validClock(clock)
   const { data, ...state } = useRequest<Accuracy>(valid ? query('accuracy', { delivery_from: first, delivery_to: last, cutoff_time: clock }) : null)
   return <>
     <div className="page-heading"><div><p className="kicker">HISTORICAL PERFORMANCE</p><h1>Forecast accuracy</h1></div><p>{meta.source} · {meta.units} · {meta.timezone}</p></div>
     <div className="controls"><label>Delivery from<input type="date" value={first} min={meta.delivery_from} max={meta.delivery_to} onInput={e => setFirst(e.currentTarget.value)} /></label><label>Delivery to<input type="date" value={last} min={meta.delivery_from} max={meta.delivery_to} onInput={e => setLast(e.currentTarget.value)} /></label><label>D-1 decision cutoff · UTC<input type="time" step="60" value={clock} onInput={e => setClock(e.currentTarget.value)} /></label><p className="control-note">Applied separately to each delivery day.<br />Assumed timing, not verified gate closure.</p></div>
     {!valid && <p className="validation" role="alert">Choose an ordered delivery range within {meta.delivery_from}–{meta.delivery_to} and a valid HH:MM cutoff.</p>}
+    <RefreshControls {...state} valid={valid} />
     <RequestState {...state} />
     {data && <>
       <div className="selection-strip"><span>Delivery <strong>{data.delivery_from} – {data.delivery_to}</strong></span><span>D-1 cutoff <strong>{data.cutoff_time} UTC</strong></span><span className="coverage">Paired hours <strong>{data.coverage.paired} / {data.coverage.expected}</strong></span></div>

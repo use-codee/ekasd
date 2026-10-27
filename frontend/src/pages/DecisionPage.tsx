@@ -1,14 +1,12 @@
-import { useState } from 'react'
 import type { Decision, Metadata } from '../types/api'
 import { query } from '../api/client'
 import { number, utc, validClock, validDay } from '../api/format'
 import { useRequest } from '../hooks/useRequest'
-import { RequestState } from '../components/States'
+import { RequestState, RefreshControls } from '../components/States'
 import { WindChart } from '../components/Charts'
 import { HourlyTable } from '../components/HourlyTable'
 
-export function DecisionPage({ meta, clock, setClock }: { meta: Metadata; clock: string; setClock: (value: string) => void }) {
-  const [delivery, setDelivery] = useState(meta.delivery_from)
+export function DecisionPage({ meta, clock, setClock, delivery, setDelivery }: { delivery: string; setDelivery: (value: string) => void; meta: Metadata; clock: string; setClock: (value: string) => void }) {
   const valid = validDay(delivery, meta.delivery_from, meta.delivery_to) && validClock(clock)
   const { data, ...state } = useRequest<Decision>(valid ? query('forecasts', { delivery_date: delivery, cutoff_time: clock }) : null)
   const publications = data?.slots.map(s => s.publish_time).filter((v): v is string => v !== null).sort() ?? []
@@ -16,6 +14,7 @@ export function DecisionPage({ meta, clock, setClock }: { meta: Metadata; clock:
     <div className="page-heading"><div><p className="kicker">HISTORICAL DECISION</p><h1>Wind available at the cutoff</h1></div><p>{meta.source} · {meta.units} · {meta.timezone}</p></div>
     <div className="controls"><label>Delivery day<input type="date" value={delivery} min={meta.delivery_from} max={meta.delivery_to} onInput={e => setDelivery(e.currentTarget.value)} /></label><label>D-1 decision cutoff · UTC<input type="time" step="60" value={clock} onInput={e => setClock(e.currentTarget.value)} /></label><p className="control-note">Decision dates {meta.decision_from}–{meta.decision_to}<br />Cutoff is assumed decision timing, not verified gate closure.</p></div>
     {!valid && <p role="alert" className="validation">Choose a supported delivery day and a cutoff in HH:MM format.</p>}
+    <RefreshControls {...state} valid={valid} />
     <RequestState {...state} />
     {data && <>
       <div className="selection-strip"><span>Decision date <strong>{data.decision_date}</strong></span><span>Information cutoff <strong>{utc(data.cutoff_utc)}</strong></span><span className="coverage">Forecast coverage <strong>{data.coverage.forecasts} / {data.coverage.expected} hours</strong></span></div>
